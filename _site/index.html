@@ -241,17 +241,17 @@
                             </ul>
                         
                             <p class="menu-label">
-                                Community & resources
+                                Features
                             </p>
                             <ul class="menu-list">
                                 
                                     <li>
-                                        <a >Integration with HuggingFace Hub</a>
+                                        <a >Layout Detection</a>
                                     </li>
                                     
                                 
                                     <li>
-                                        <a >Demo Video</a>
+                                        <a >Legibility Classification</a>
                                     </li>
                                     
                                 
@@ -313,7 +313,8 @@ for mobile phones.</p>
 
 <p><img src="/assets/images/index/pipeline.png" alt="Illustration of the pipeline" /></p>
 
-<p>All pipeline components are <a href="https://github.com/dell-research-harvard/AmericanStories">open source</a>.</p>
+<p>All pipeline components are <a href="https://github.com/dell-research-harvard/AmericanStories">open source</a>. For more information please
+view <a href="TODO: Link to paper">our paper</a>.</p>
 
     </p>
     
@@ -396,21 +397,16 @@ and customized Efficient OCR.</p>
                     
                         
                             <div class="what-hero-detail"
-                            id="Integration-with-HuggingFace-Hub">
+                            id="Layout-Detection">
                                 <div class="content">
     <h2 class="title is-size-3">
-        Sharing Trained models on the HuggingFace Hub
+        Recognizing Complex Newspaper Layouts
     </h2>
     
     <p>
-        <p>LinkTransformer also aims to create a community platform for deep record linkage. Since Deep Learning has barely made any inroads into Record Linkage/Entity matching, trained models would benefit the community - especially those who can’t train models themselves. 
-Since LinkTransformers is well-integrated with the HuggingFace hub, all models can be uploaded/downloaded with a single line of code. By streamlining the distribution of record linkage models, as well as promoting the reusability of these deep learning-based pipelines, Linktrasnformer can completely transform the record-linkage workflow and pipelines broadly. 
-Our own models are shared on the hub, and we welcome the community to share their own models as well.</p>
-<p align="center">
-  <a href="https://huggingface.co/dell-research-harvard">
-    <img src="/assets/site/Upload.png" alt="Illustration of the sharing Platform" style="width:75%;" />
-  </a>
-</p>
+        <p>American Stories uses a deep docuement layout model to recognizer layout regions in a content-dense 
+newspaper scan. Splitting texts into 
+<img src="/assets/images/index/layouts.png" alt="Layout Detection Example" /></p>
 
     </p>
     
@@ -419,16 +415,24 @@ Our own models are shared on the hub, and we welcome the community to share thei
                             
                         
                             <div class="what-hero-detail"
-                            id="Demo-Video">
+                            id="Legibility-Classification">
                                 <div class="content">
     <h2 class="title is-size-3">
-        
+        Not all scans are created equal
     </h2>
     
     <p>
-        <div class="video_container">
-  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Sn47nmCvV9M" frameborder="0" allowfullscreen="true"></iframe>
-</div>
+        <p>Substantial shares of illegible content can degrade language model training and bias downstream
+applications. For example, it is common for social scientists to construct data based on the presence
+of keyword terms, assigning a positive outcome if the term is present and a zero outcome otherwise. Illegibility can bias downstream analyses if it is correlated with an underlying unobserved
+factor. In the case of American Stories, legiblity varies throughout space and time:</p>
+
+<p><img src="/assets/images/index/illegible_proportions.png" alt="Legibility by Year" />
+<img src="/assets/images/index/article_illegibility.png" alt="Legibility by State" /></p>
+
+<p>We classify each article and headline as Legible, Illegible, or Borderline.</p>
+
+<p><img src="/assets/images/index/legibility_examples.png" alt="Legibility Classification Example" /></p>
 
     </p>
     
@@ -494,7 +498,7 @@ Our own models are shared on the hub, and we welcome the community to share thei
 
                     </h1>
                     <h2 class="subtitle is-size-4">
-                        <p>Learn about LinkTransformer via a collection of carefully curated tutorials.</p>
+                        <p>Start with the <a href="https://colab.research.google.com/drive/1ifzTDNDtfrrTy-i7uaq3CALwIWa7GB9A?ts=648b98bf">Demo Notebook</a> (opens in Colab) for a quick intro do the American Stories Dataset</p>
 
                     </h2>
                 </div>
