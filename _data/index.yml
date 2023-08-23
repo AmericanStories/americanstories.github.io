@@ -3,10 +3,10 @@ icon: '/assets/site/favicon.ico'
 
 slogan: 
   title: >
-    LinkTransformer --
-    AI-powered dataframe operations in 2 lines of code
+    AmericanStories --
+    A massive, structured corpus of early American newspaper articles
   description: >
-    Link data frames, deduplicate, cluster, and perform multilingual merges with the full power of Deep Learning.
+    20 million newspaper scans, with over 400 million individual articles, spanning from 1780-1960.
   example: '/assets/site/Linkktransformers_demo_dedup.png'
   install: 'pip install linktransformer'
 
