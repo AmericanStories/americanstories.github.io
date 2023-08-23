@@ -3,34 +3,62 @@ icon: '/assets/site/favicon.ico'
 
 slogan: 
   title: >
-    AmericanStories --
-    A massive, structured corpus of early American newspaper articles
+    American Stories --
   description: >
-    20 million newspaper scans, with over 400 million individual articles, spanning from 1780-1960.
+    A massive, structured corpus of early American newspaper articles
   example: '/assets/site/Linkktransformers_demo_dedup.png'
-  install: 'pip install linktransformer'
+  install: 'https://huggingface.co/datasets/dell-research-harvard/AmericanStories'
 
 what:
-  title: What is LinkTransformer?
+  title: American Stories
   description: >
-    A Unified Python Package for Record Linkage with Transformer Models
+    440 million Newspaper Articles and 420 million Headlies from 1780 to 1960
   functions:  
-    - section: Record Linkage
+    - section: About the Dataset
       subsections: 
-      - name: Deep Learning Models 
-        title: Easy Record Linkage with Deep Learning Models
+      - name: Contents
+        title: The largest public collection of structured historical American news articles
         description: |
-          With the help of state-of-the-art deep learning models, LinkTransformer brings the advantages of artificial intelligence to standard dataframe manipulation tasks like deduplication, clustering, and merges.
-          Using most deep-learning libraries and pipelines for these tasks is out of reach for the average data analyst. LinkTransformer makes using these models in a standard daata wrangling workflow easy with just a few lines of code.
-          Training your own models is also as easy as one line of code with most of the heavy lifting done behind the scenes. The API is designed to be as simple as possible and very familiar to practitioners coming from other environments like R and Stata.
+          American Stories is a collection of 440 million newspaper articles and 420 million headlines from 1780 to 1960. 
+          The dataset is collected from nearly 20 million individual newspaper scans hosted by
+          Chronicling America, a project by the Library of Congress. 
 
-          ![Example of a familiar API on data frame manipulation tasks](/assets/site/Linkktransformers_demo_example.png)
-          ▲ *Merge with Language models like you would in Pandas!*
-          
-      - name: Use Pre-trained Models
-        title: All models on Hugginface Hub and OpenAI Embedding models are supported
+          ![Dataset counts](/assets/images/index/counts.jpg)
+
+          The complete dataset contains 65.6 billion words, spans 180 years of American history, and originates from 50 US states and territories.
+
+          ![Breakdown by State](/assets/images/index/state_counts.png)  ![Breakdown by Time](/assets/images/index/time.png)
+
+
+      - name: Pipeline
+        title: A modular, optimized pipeline for extracting article texts
         description: |
-          To accommodate heterogenous document layout structures, LinkTransformer a collection of DL models trained on different datasets. Currently, there are over 10 models trained on diverse datasets which can be downloaded from [Hugging Face](https://huggingface.co/dell-research-harvard)
+          American Stories used a deep learning pipeline for extracting full article texts from newspaper images.
+          The pipeline includes layout detection, legibility classification, custom OCR, 
+          and association of article texts spanning multiple bounding
+          boxes. To achieve high scalability, it was built with efficient architectures designed
+          for mobile phones.
+
+          ![Illustration of the pipeline](/assets/images/index/pipeline.png)
+
+          All pipeline components are [open source](https://github.com/dell-research-harvard/AmericanStories).
+
+        
+      - name: Chronicling America
+        title: Public Domain Newspaper Scans from the Library of Congress
+        description: |
+          Library of Congress's Chronicling America project is the primary public domain historical U.S.
+          newspaper dataset. It consists of around 20 million historical newspaper scans and their corresponding 
+          digitized texts. Its content is concentrated before 1925, as this content has entered the public
+          domain. Chronicling America does not recognize oftentimes complex newspaper layouts, and so
+          digitized texts are provided at the page level, often scrambling headlines, articles, advertisements,
+          captions, and other content regions together.
+
+          American Stories uses the same underlying newspaper scans as Chronicling America, but
+          provides a richer dataset with structured article/headline pairs, legibility classification,
+          and customized Efficient OCR.
+
+          ![Chronicling America Example Page](/assets/images/index/0102.jpg)
 
         #   ![Different Datasets](/assets/images/index/dataset-illustration.png)
         #   ▲ *Exemplar images in the 5 used datasets (screenshots are taken from their papers or open-sourced datasets).* 
@@ -62,16 +90,42 @@ what:
     #     description: | 
     #       LinkTransformer supports loading and exporting layout data to different formats, including general formats like `csv`, `json`, or domain-specific formats like `PAGE`, `COCO`, or `METS/ALTO` format (Full support for them will be released soon). It provides the flexibility for integrating LinkTransformer with other document image analysis pipelines, and makes it easy to share your outputs with the community. 
 
-    - section: Train your own!
-      subsections:
-      - name: Train Record Linkage Models
-        title: Easy to Train Your Own Record Linkage models with one line of code
-        description: |
-          LinkTransformer also comes with full support for customized record linkage model training on your own dataset. This enables you to achieve optimal prediction accuracy on your own dataset and can simplify your pipeline. 
-          You can train your own or fine-tune any pretrained model from Hugging Face! Learn more details at our [repo](https://github.com/dell-research-harvard/linktransformer).
-          ![Training illustration for LT](/assets/images/index/train_lt.png)
-        ref: |
-          - [Tutorial](https://colab.research.google.com/drive/1tHitPGjMMI2Nvh4wwA8rdcbYfbLaJDvg?usp=sharing)
+    - section: Get the Data
+      subsections: 
+        - name: Huggingface Download
+          title: Easy Download via HuggingFace
+          description: |
+            American Stories is hosted on the HuggingFace Hub, and can be downloaded with a single line of code.
+
+            *WARNING*: The dataset is large (around 4TB), and so downloading the full dataset may take a long time. We recommend downloading a subset of the dataset first to test your code. 
+
+            ```python
+            from datasets import load_dataset
+
+            #  Download data for the year 1809 at the associated article level (Default)
+            dataset = load_dataset("dell-research-harvard/AmericanStories",
+                "subset_years",
+                year_list=["1809", "1810"]
+            )
+
+            # Download and process data for all years at the article level
+            dataset = load_dataset("dell-research-harvard/AmericanStories",
+                "all_years"
+            )
+
+            # Download and process data for 1809 at the scan level
+            dataset = load_dataset("dell-research-harvard/AmericanStories",
+                "subset_years_content_regions",
+                year_list=["1809"]
+            )
+
+            # Download ad process data for all years at the scan level
+            dataset = load_dataset("dell-research-harvard/AmericanStories",
+                "all_years_content_regions")
+
+            ```
+
+
 
       # - name: Efficient Data Labeling
       #   title: Efficiently Creating Your Training Dataset

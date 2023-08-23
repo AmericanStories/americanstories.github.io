@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/assets/site/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AmericanStories </title>
+    <meta name="description" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/">
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="http://localhost:4000/">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+
+    <!-- TODO: Adding page thumbnail for social meida -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/bulma.css">
+    <link rel="stylesheet" href="/assets/css/syntax/manni.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+          inlineMath: [ ['$','$'] ],
+          displayMath: [ ['$$','$$'] ],
+          processEscapes: true,
+        }
+      });
+    </script>
+    
+    <script type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+    <!-- Add link to h2 ... h6 -->
+    <!-- Ref: https://ben.balter.com/2014/03/13/pages-anchor-links/ -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+      $(function() {
+        return $("h2, h3, h4, h5, h6").each(function(i, el) {
+          var $el, icon, id;
+          $el = $(el);
+          id = $el.attr('id');
+          icon = '<i class="fas fa-link"></i>';
+          if (id) {
+            return $el.append($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+          }
+        });
+      });
+    </script>
+    
+    <!-- Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y24L55KZZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Y24L55KZZ');
+</script>
+
+
+</head>
+
+<body>
+
+    
+    <section class="hero is-danger is-bold slogan-hero">
+    <div class="hero-head">
+        <nav class="navbar lp-navbar" role="navigation">
+    <!-- style="background-color: #EE7070;" -->
+    <div class='container'>
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+               <img class="lp-badge" src="/assets/site/4.svg">
+            </a>
+    
+            <div class="navbar-burger" data-target="navbar-main"
+                onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    
+        <div class="navbar-menu" id="navbar-main">
+            <div class="navbar-end">
+                <!-- navbar items -->
+                
+                <a href="https://linktransformer.readthedocs.io/en/latest/" onmousedown="return false" class="navbar-item">Docs</a>
+                
+                
+                <div class="navbar-item">
+                    <a href="https://github.com/dell-research-harvard/linktransformer" class="bg-transparent button is-danger" target="_blank">
+                        <i class="fab fa-github fa-w-14 fa-lg" aria-hidden="true"></i>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- <div class="is-divider" style="margin-top: 0.5rem; margin-bottom: 3rem;"></div> -->
+    </div>
+    <div class="hero-body">
+        <div class="container">
+            
+            <h1 class="title slogan is-size-2">
+                <p>American Stories –</p>
+
+            </h1>
+            <h2 class="subtitle has-text-white-ter slogan-description is-size-5">
+                <p>A massive, structured corpus of early American newspaper articles</p>
+
+            </h2>
+            <button class="mt-5 install-btn" onclick="copyPipInstall()">
+                <script>
+                    function copyPipInstall() {
+                        var copyText = document.getElementById("pip-install")
+                        var textArea = document.createElement("textarea")
+                        const content = copyText.textContent
+                        textArea.value = copyText.textContent
+                        document.body.appendChild(textArea)
+                        textArea.select()
+                        document.execCommand("Copy")
+                        textArea.remove()
+                        $("#pip-install").text("Copied!")
+                        setTimeout(function () {
+                            $("#pip-install").text(content)
+                        }, 2000)
+                    }
+                </script>
+
+                <span class="is-small mr-2">
+                    <i class="fas fa-copy"></i>
+                </span>
+                <span id="pip-install">https://huggingface.co/datasets/dell-research-harvard/AmericanStories</span>
+            </button>
+
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-body pb-0 ">
+        <div class="container">
+            
+            <div class="columns is-centered mb-5">
+                <div class="column has-text-centered">
+                    <h1 class="title is-size-2">
+                        <p>American Stories</p>
+
+                    </h1>
+                    <h2 class="subtitle is-size-4">
+                        <p>440 million Newspaper Articles and 420 million Headlies from 1780 to 1960</p>
+
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    window.onload = () => {
+        document.querySelectorAll(".menu").forEach(menu => {
+            menu.querySelectorAll('a').forEach(atag => {
+                console.log(atag.target)
+                atag.onclick = () => {
+                    menu.querySelector('a.is-active').classList.remove('is-active');
+                    atag.classList.add('is-active');
+                    menu.parentElement.nextElementSibling.querySelector(".what-hero-detail.is-active").classList.remove("is-active");
+                    menu.parentElement.nextElementSibling.querySelector("#" + atag.text.replaceAll(" ", "-")).classList.add("is-active");
+                }
+            })
+        })
+    }
+</script>
+
+<section class="hero">
+    <div class="hero-body pt-4">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <aside class="menu">
+                        
+                        
+                            <p class="menu-label">
+                                About the dataset
+                            </p>
+                            <ul class="menu-list">
+                                
+                                    <li>
+                                        <a  class="is-active" >Contents</a>
+                                    </li>
+                                    
+                                
+                                    <li>
+                                        <a >Pipeline</a>
+                                    </li>
+                                    
+                                
+                                    <li>
+                                        <a >Chronicling America</a>
+                                    </li>
+                                    
+                                
+                            </ul>
+                        
+                            <p class="menu-label">
+                                Get the data
+                            </p>
+                            <ul class="menu-list">
+                                
+                                    <li>
+                                        <a >Huggingface Download</a>
+                                    </li>
+                                    
+                                
+                            </ul>
+                        
+                            <p class="menu-label">
+                                Community & resources
+                            </p>
+                            <ul class="menu-list">
+                                
+                                    <li>
+                                        <a >Integration with HuggingFace Hub</a>
+                                    </li>
+                                    
+                                
+                                    <li>
+                                        <a >Demo Video</a>
+                                    </li>
+                                    
+                                
+                                    <li>
+                                        <a >Tutorial Notebooks</a>
+                                    </li>
+                                    
+                                
+                                    <li>
+                                        <a >Feature Deck</a>
+                                    </li>
+                                    
+                                
+                            </ul>
+                        
+                    </aside>
+                </div>
+                <div class="column is-8 is-offset-1">
+                    
+                    
+                        
+                            <div class="is-active what-hero-detail"
+                            id="Contents">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        The largest public collection of structured historical American news articles
+    </h2>
+    
+    <p>
+        <p>American Stories is a collection of 440 million newspaper articles and 420 million headlines from 1780 to 1960. 
+The dataset is collected from nearly 20 million individual newspaper scans hosted by
+Chronicling America, a project by the Library of Congress.</p>
+
+<p><img src="/assets/images/index/counts.jpg" alt="Dataset counts" /></p>
+
+<p>The complete dataset contains 65.6 billion words, spans 180 years of American history, and originates from 50 US states and territories.</p>
+
+<p><img src="/assets/images/index/state_counts.png" alt="Breakdown by State" />  <img src="/assets/images/index/time.png" alt="Breakdown by Time" /></p>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                            <div class="what-hero-detail"
+                            id="Pipeline">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        A modular, optimized pipeline for extracting article texts
+    </h2>
+    
+    <p>
+        <p>American Stories used a deep learning pipeline for extracting full article texts from newspaper images.
+The pipeline includes layout detection, legibility classification, custom OCR, 
+and association of article texts spanning multiple bounding
+boxes. To achieve high scalability, it was built with efficient architectures designed
+for mobile phones.</p>
+
+<p><img src="/assets/images/index/pipeline.png" alt="Illustration of the pipeline" /></p>
+
+<p>All pipeline components are <a href="https://github.com/dell-research-harvard/AmericanStories">open source</a>.</p>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                            <div class="what-hero-detail"
+                            id="Chronicling-America">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        Public Domain Newspaper Scans from the Library of Congress
+    </h2>
+    
+    <p>
+        <p>Library of Congress’s Chronicling America project is the primary public domain historical U.S.
+newspaper dataset. It consists of around 20 million historical newspaper scans and their corresponding 
+digitized texts. Its content is concentrated before 1925, as this content has entered the public
+domain. Chronicling America does not recognize oftentimes complex newspaper layouts, and so
+digitized texts are provided at the page level, often scrambling headlines, articles, advertisements,
+captions, and other content regions together.</p>
+
+<p>American Stories uses the same underlying newspaper scans as Chronicling America, but
+provides a richer dataset with structured article/headline pairs, legibility classification,
+and customized Efficient OCR.</p>
+
+<p><img src="/assets/images/index/0102.jpg" alt="Chronicling America Example Page" /></p>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                    
+                        
+                            <div class="what-hero-detail"
+                            id="Huggingface-Download">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        Easy Download via HuggingFace
+    </h2>
+    
+    <p>
+        <p>American Stories is hosted on the HuggingFace Hub, and can be downloaded with a single line of code.</p>
+
+<p><em>WARNING</em>: The dataset is large (around 4TB), and so downloading the full dataset may take a long time. We recommend downloading a subset of the dataset first to test your code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+
+<span class="c1">#  Download data for the year 1809 at the associated article level (Default)
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s">"dell-research-harvard/AmericanStories"</span><span class="p">,</span>
+    <span class="s">"subset_years"</span><span class="p">,</span>
+    <span class="n">year_list</span><span class="o">=</span><span class="p">[</span><span class="s">"1809"</span><span class="p">,</span> <span class="s">"1810"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Download and process data for all years at the article level
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s">"dell-research-harvard/AmericanStories"</span><span class="p">,</span>
+    <span class="s">"all_years"</span>
+<span class="p">)</span>
+
+<span class="c1"># Download and process data for 1809 at the scan level
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s">"dell-research-harvard/AmericanStories"</span><span class="p">,</span>
+    <span class="s">"subset_years_content_regions"</span><span class="p">,</span>
+    <span class="n">year_list</span><span class="o">=</span><span class="p">[</span><span class="s">"1809"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Download ad process data for all years at the scan level
+</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s">"dell-research-harvard/AmericanStories"</span><span class="p">,</span>
+    <span class="s">"all_years_content_regions"</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                    
+                        
+                            <div class="what-hero-detail"
+                            id="Integration-with-HuggingFace-Hub">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        Sharing Trained models on the HuggingFace Hub
+    </h2>
+    
+    <p>
+        <p>LinkTransformer also aims to create a community platform for deep record linkage. Since Deep Learning has barely made any inroads into Record Linkage/Entity matching, trained models would benefit the community - especially those who can’t train models themselves. 
+Since LinkTransformers is well-integrated with the HuggingFace hub, all models can be uploaded/downloaded with a single line of code. By streamlining the distribution of record linkage models, as well as promoting the reusability of these deep learning-based pipelines, Linktrasnformer can completely transform the record-linkage workflow and pipelines broadly. 
+Our own models are shared on the hub, and we welcome the community to share their own models as well.</p>
+<p align="center">
+  <a href="https://huggingface.co/dell-research-harvard">
+    <img src="/assets/site/Upload.png" alt="Illustration of the sharing Platform" style="width:75%;" />
+  </a>
+</p>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                            <div class="what-hero-detail"
+                            id="Demo-Video">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        
+    </h2>
+    
+    <p>
+        <div class="video_container">
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Sn47nmCvV9M" frameborder="0" allowfullscreen="true"></iframe>
+</div>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                            <div class="what-hero-detail"
+                            id="Tutorial-Notebooks">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        
+    </h2>
+    
+    <p>
+        <ul>
+  <li><a href="https://colab.research.google.com/drive/1tHitPGjMMI2Nvh4wwA8rdcbYfbLaJDvg">Train your own LinkTransformer model</a></li>
+  <li><a href="https://colab.research.google.com/drive/1OqUB8sqpUvrnC8oa_1RoOUzV6DaAKL4N">Link Records and other tasks using LinkTransformer models</a></li>
+  <li><a href="https://colab.research.google.com/drive/1OqUB8sqpUvrnC8oa_1RoOUzV6DaAKL4N">Feature Round-up for wrangling using Linktransformer</a></li>
+</ul>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                            <div class="what-hero-detail"
+                            id="Feature-Deck">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        
+    </h2>
+    
+    <p>
+        <ul>
+  <li><a href="https://www.dropbox.com/scl/fi/dquxru8bndlyf9na14cw6/A-python-package-to-do-easy-record-linkage-using-Transformer-models.pdf?rlkey=fiv7j6c0vgl901y940054eptk&amp;dl=0">LinkTransformer API Preview</a></li>
+</ul>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-body pb-0 pt-0">
+        <div class="container">
+            
+                <div class="is-divider"></div>
+            
+            <div class="columns is-centered mb-5">
+                <div class="column has-text-centered">
+                    <h1 class="title is-size-2">
+                        <p>Get started!</p>
+
+                    </h1>
+                    <h2 class="subtitle is-size-4">
+                        <p>Learn about LinkTransformer via a collection of carefully curated tutorials.</p>
+
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-body pt-4">
+        <div class="container">
+            
+            
+
+            
+        </div>
+    </div>
+</section>
+<!-- 
+<section class="hero slack-hero mt-6">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <p class='title is-size-2 slack-title'></p>
+                    <p class='subtitle is-size-5 mt-2'>
+                        
+                    </p>
+                    <button class="mt-2 p-4 slack-btn">
+                        <a class="slack-btn-txt"
+                            href=""
+                            target="_blank">Join our #Slack</a>
+                    </button>
+                </div>
+                <div class="column is-two-fifths">
+                    <figure class="image is-2by1">
+                        <img src="">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+    
+<footer class="footer">
+    <div class="container">
+        <div class="is-divider mb-3"></div>
+        <div class="content has-text-centered">
+            <p>Created and maintained by LinkTransformer Developers. Built with <a href="https://jekyllrb.com/">jekyll</a> and <a href="http://bulma.io/">bulma</a>.</p>
+
+        </div>
+
+    </div>
+</footer>
+
+</body>
+
+</html>
