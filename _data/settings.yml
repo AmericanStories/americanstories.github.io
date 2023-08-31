@@ -1,20 +1,20 @@
 # If you are not using Google Analytics, please change 'google-ID' to an empty string
-google-ID: 'G-3Y24L55KZZ'
+google-ID: ''
 # disqus-ID: x
 # utterances-repo: x
 
 
 assets:
-  logo: '/assets/site/3.svg' 
-  badge: '/assets/site/4.svg' 
+  # logo: '/assets/site/logo.svg' 
+  # badge: '/assets/site/logo.svg' 
 
 menu:
 # - {name: 'Tutorials', file: '/tutorials.html'}
-- {name: 'Docs', file: 'https://linktransformer.readthedocs.io/en/latest/'}
+- {name: 'Docs', file: 'https://huggingface.co/datasets/dell-research-harvard/AmericanStories'}
 
 social:
 # - {name: 'slack', icon: 'fab fa-slack-hash', link: ''}
-- {name: 'Github', icon: 'fab fa-github', link: 'https://github.com/dell-research-harvard/linktransformer'}
+- {name: 'Github', icon: 'fab fa-github', link: 'https://github.com/dell-research-harvard/AmericanStories'}
 
 # tutorials:
 #   categories:
@@ -22,4 +22,4 @@ social:
 #     - {name: 'usecase', title: 'Use Cases'}
 
 footnote: >
-  Created and maintained by LinkTransformer Developers. Built with [jekyll](https://jekyllrb.com/) and [bulma](http://bulma.io/).
+  Created and maintained by AmericanStories Developers. Built with [jekyll](https://jekyllrb.com/) and [bulma](http://bulma.io/).

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="/assets/site/favicon.ico" />
+    <link rel="icon" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>AmericanStories </title>
@@ -70,13 +70,13 @@
     
     <!-- Google Analytics -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y24L55KZZ"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-3Y24L55KZZ');
+  gtag('config', '');
 </script>
 
 
@@ -92,7 +92,7 @@
     <div class='container'>
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-               <img class="lp-badge" src="/assets/site/4.svg">
+               <img class="lp-badge" src="">
             </a>
     
             <div class="navbar-burger" data-target="navbar-main"
@@ -107,11 +107,11 @@
             <div class="navbar-end">
                 <!-- navbar items -->
                 
-                <a href="https://linktransformer.readthedocs.io/en/latest/" onmousedown="return false" class="navbar-item">Docs</a>
+                <a href="https://huggingface.co/datasets/dell-research-harvard/AmericanStories" onmousedown="return false" class="navbar-item">Docs</a>
                 
                 
                 <div class="navbar-item">
-                    <a href="https://github.com/dell-research-harvard/linktransformer" class="bg-transparent button is-danger" target="_blank">
+                    <a href="https://github.com/dell-research-harvard/AmericanStories" class="bg-transparent button is-danger" target="_blank">
                         <i class="fab fa-github fa-w-14 fa-lg" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -130,7 +130,7 @@
 
             </h1>
             <h2 class="subtitle has-text-white-ter slogan-description is-size-5">
-                <p>A massive, structured corpus of early American newspaper articles</p>
+                <p>Billion-scale dataset of public domain American newspapers: 1780-1960</p>
 
             </h2>
             <button class="mt-5 install-btn" onclick="copyPipInstall()">
@@ -172,7 +172,7 @@
 
                     </h1>
                     <h2 class="subtitle is-size-4">
-                        <p>440 million Newspaper Articles and 420 million Headlies from 1780 to 1960</p>
+                        <p>Hundreds of millions of newspaper articles from 1780 to 1960</p>
 
                     </h2>
                 </div>
@@ -226,6 +226,11 @@
                                     </li>
                                     
                                 
+                                    <li>
+                                        <a >Why Structured Texts</a>
+                                    </li>
+                                    
+                                
                             </ul>
                         
                             <p class="menu-label">
@@ -276,7 +281,7 @@
     </h2>
     
     <p>
-        <p>American Stories is a collection of 440 million newspaper articles and 420 million headlines from 1780 to 1960. 
+        <p>American Stories is a collection of hundreds of millions of articles, drawn from 1.14 billion newspaper content regions. 
 The dataset is collected from nearly 20 million individual newspaper scans hosted by
 Chronicling America, a project by the Library of Congress.</p>
 
@@ -309,7 +314,7 @@ for mobile phones.</p>
 <p><img src="/assets/images/index/pipeline.png" alt="Illustration of the pipeline" /></p>
 
 <p>All pipeline components are <a href="https://github.com/dell-research-harvard/AmericanStories">open source</a>. For more information please
-view <a href="TODO: Link to paper">our paper</a>.</p>
+view <a href="https://arxiv.org/abs/2308.12477">our paper</a>.</p>
 
     </p>
     
@@ -332,11 +337,54 @@ domain. Chronicling America does not recognize oftentimes complex newspaper layo
 digitized texts are provided at the page level, often scrambling headlines, articles, advertisements,
 captions, and other content regions together.</p>
 
+<p>Three main differences distingush this dataset from the Chronicling America corpus:</p>
+<ol>
+  <li>American Stories contsint content regions, which allow for article-level texts.</li>
+  <li>Legibility Classification allows for legibility-aware analyses.</li>
+  <li>American Stories provides more accurate OCR of the Chronicling America scans. The following figure compares OCR word rate
+  between the two datasets:</li>
+</ol>
+
+<p><img src="/assets/images/index/nwr.png" alt="OCR Comparison" /></p>
+
 <p>American Stories uses the same underlying newspaper scans as Chronicling America, but
 provides a richer dataset with structured article/headline pairs, legibility classification,
 and customized Efficient OCR.</p>
 
 <p><img src="/assets/images/index/0102.jpg" alt="Chronicling America Example Page" /></p>
+
+    </p>
+    
+</div>
+                            </div>  
+                            
+                        
+                            <div class="what-hero-detail"
+                            id="Why-Structured-Texts">
+                                <div class="content">
+    <h2 class="title is-size-3">
+        Structured Article Texts provide more accurate and precise content analyses
+    </h2>
+    
+    <p>
+        <p>What makes structured article texts so valuable? Individually processing articles makes a number of 
+downstream analyses possible, including:</p>
+
+<p><em>Topic Classification</em>
+American Stories supports article level classification, whereas Chronicling America only supports page level classification. A page is a positive example in the ground truth if any of the articles
+are on topic, and article or chunk predictions can be aggregated to page level predictions using the
+same definition. Retrieval at the scan level tends to retrieve a lot of extraneous content, as typically
+only part of the page contains articles about politics.</p>
+
+<p><em>News Story Clustering</em>
+The structured nature of American Stories allows for further article-level clustering of content. As a demonstration of this, we show how articles can be grouped into
+news stories, with different articles that are part of the same unfolding news story clustering together.
+This prediction is not possible with the unstructured page content in Chronicling America. Details of this experiement are found
+in <a href="https://arxiv.org/abs/2308.12477">our paper</a>.</p>
+
+<p>The following list of stories are our results from this experiment:</p>
+
+<p><img src="/assets/images/index/stories.png" alt="Biggest stories by year" /></p>
 
     </p>
     
@@ -522,7 +570,7 @@ More about Efficient OCR can be found at its <a href="https://arxiv.org/abs/2304
     <div class="container">
         <div class="is-divider mb-3"></div>
         <div class="content has-text-centered">
-            <p>Created and maintained by LinkTransformer Developers. Built with <a href="https://jekyllrb.com/">jekyll</a> and <a href="http://bulma.io/">bulma</a>.</p>
+            <p>Created and maintained by AmericanStories Developers. Built with <a href="https://jekyllrb.com/">jekyll</a> and <a href="http://bulma.io/">bulma</a>.</p>
 
         </div>
 
